@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rohit_Akude_Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+  <script src="ins.js"></script>
+  <style>
+    /* this is style part
+    */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Orbitron', sans-serif;
+      background-color: #1a1a1a;
+      color: #fff;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .skill-container {
+      width: 80%;
+      margin: 0 auto 40px;
+      transform-style: preserve-3d;
+      transform: rotateX(20deg);
+    }
+
+    .skill {
+      margin-bottom: 40px;
+      position: relative;
+      height: 40px;
+      background: #222;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgb(22, 204, 15)
+    }
+
+    .skill-name {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-weight: bold;
+      z-index: 2;
+    }
+
+    .skill-bar {
+      height: 100%;
+      width: 0;
+      background: linear-gradient(135deg, #046b70, #4ffefe);
+      border-radius: 10px;
+      transform: translateZ(20px);
+      transition: width 2s ease;
+    }
+
+    .percent {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-weight: bold;
+      z-index: 2;
+    }
+
+    .skill-wrapper {
+      transform-style: preserve-3d;
+      transform: rotateY(-15deg);
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      background-color: #1b1b1b;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 100;
+    }
+
+    header .logo {
+      font-size: 30px;
+      font-weight: 600;
+      color: #5c1414;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    header nav a {
+      margin: 0 20px;
+      text-decoration: none;
+      color: #f1efef;
+      font-size: 18px;
+      letter-spacing: 1px;
+      transition: color 0.3s ease;
+    }
+
+    header nav a:hover {
+      color: #ce6d11;
+    }
+
+    .hero {
+      height: 100vh;
+      background: url('https://via.placeholder.com/1920x1080') no-repeat center center/cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fa0c0c;
+      position: relative;
+      animation: zoomIn 2s ease-in-out;
+    }
+
+    @keyframes zoomIn {
+      0% {
+        transform: scale(1.2);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .hero h1 {
+      font-size: 70px;
+      color: #000000;
+      text-shadow: 0 0 15px #37f2ff, 0 0 25px #f5350a;
+      opacity: 0;
+      animation: fadeInHero 2s forwards;
+    }
+
+    @keyframes fadeInHero {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    .section {
+      padding: 100px 50px;
+      text-align: center;
+      background: #02000015;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section h2 {
+      font-size: 40px;
+      color: #c8db1a;
+      margin-bottom: 40px;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: slideIn 1s forwards;
+    }
+
+    @keyframes slideIn {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .projects {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+    }
+
+    .project-card {
+      background-color: #2b272763;
+      padding: 20px;
+      width: 300px;
+      border-radius: 10px;
+      box-shadow: 0 6px 12px rgba(233, 10, 10, 0.767);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 1s forwards;
+      transition: transform 1.0s ease, box-shadow 1.0s ease;
+      cursor: pointer;
+    }
+
+    @keyframes fadeUp {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .project-card:hover {
+      transform: scale(1.55);
+      box-shadow: 0 10px 15px rgba(12, 255, 4, 0.6);
+    }
+
+    .project-card img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .project-card h3 {
+      margin-top: 15px;
+      font-size: 24px;
+      color: #00ffffa4;
+      font-weight: bold;
+    }
+
+    .contact {
+      background-color: #0c0c0c00;
+      padding: 50px 20px;
+      text-align: center;
+      position: relative;
+      animation: slideUp 1s ease-in-out;
+    }
+
+    @keyframes slideUp {
+      0% { transform: translateY(50px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    .contact h2 {
+      font-size: 35px;
+      color: #834646;
+      margin-bottom: 20px;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1s forwards;
+    }
+
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .contact form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .contact form input,
+    .contact form textarea {
+      width: 300px;
+      margin: 10px 0;
+      padding: 10px;
+      border: 2px solid #ffae00d0;
+      border-radius: 5px;
+      background-color: #1e1e1e;
+      color: #fcf4f4;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .contact form input[type="submit"] {
+      background-color: #30eefc;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .contact form input[type="submit"]:hover {
+      background-color: #25944aa4;
+    }
+
+    .contact form input:focus,
+    .contact form textarea:focus {
+      border-color: #ff3333;
+      background-color: #1c1c1c;
+    }
+   /*end of style*/
+  </style>
+</head>
+<body>
+
+  <!-- Header Section -->
+  <header>
+    <div class="logo" >Rohit_Akude</div>
+    <nav>
+      <a href="#hero">Hero</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="hero" class="hero">
+   <div class="about-content">
+        <img src="rohit1.JPG" alt="Background Image" class="profile-img" style="width: 30%; height: 60%; position: absolute; top: 1; left: 0; z-index: -1;">
+   </div>
+     <h1></h1>
+    <h1>    Rohit Akude</h1>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section">
+    
+    <h2>About Me</h2>
+    <p>
+      Hi, I'm Rohit Akude, a Computer Engineering student pursuing my diploma in Polytechnic.
+       I have hands-on experience with HTML, CSS, JavaScript (including animation), as well as Java and Python. 
+       I'm passionate about building creative and functional web projects
+    </p>
+  </section>
+
+
+  <!--Skills Section-->
+  <section id="skills" class="section">
+   <h2>My Skills</h2>
+   <div class="skill-container">
+    <div class="skill-wrapper">
+      <div class="skill" data-percent="85">
+        <div class="skill-name">HTML</div>
+        <div class="skill-bar"></div>
+        <div class="percent">85%</div>
+      </div>
+
+      <div class="skill" data-percent="60">
+        <div class="skill-name">Java</div>
+        <div class="skill-bar"></div>
+        <div class="percent">60%</div>
+      </div>
+
+      <div class="skill" data-percent="80">
+        <div class="skill-name">CSS</div>
+        <div class="skill-bar"></div>
+        <div class="percent">80%</div>
+      </div>
+
+      <div class="skill" data-percent="80">
+        <div class="skill-name">JavaScript</div>
+        <div class="skill-bar"></div>
+        <div class="percent">80%</div>
+      </div>
+    </div>
+  </div>
+  </section>
+
+
+  <!-- Projects Section -->
+  <section id="projects" class="section">
+    <h2>My Projects</h2>
+    <div class="projects">
+      <!-- Project Card -->
+      <div class="project-card">
+        <img src="project1.png" alt="Project Image" >
+       
+        <h3 onclick="window.location.href='https://rohitkartik.netlify.app/'">Project 1</h3>
+        <p onclick="window.location.href='https://rohitkartik.netlify.app/'">Welcome to your personal AI companion! 
+          This interactive web app offers a vibrant and modern interface where you
+         can chat with your AI assistant and get help, answers, or just have a conversation — anytime, anywhere</p>
+         
+      </div>
+      
+      <div class="project-card">
+        <img src="project2.png" alt="Project Image">
+        <h3 onclick="window.location.href='https://rohitkartik2.netlify.app/'">Project 2</h3>
+        <p onclick="window.location.href='https://rohitkartik2.netlify.app/'"> 
+          Generate your professional resume in minutes! This easy-to-use resume builder helps you enter personal 
+          and professional information, upload a photo, and include your social links — all in one clean interface   </p>
+      </div>
+     
+
+      <div class="project-card">
+        <img src="qwe.png" alt="Project Image">
+        <h3 onclick="window.location.href='#hero'">Project 3</h3>
+        <p onclick="window.location.href='#hero'"> 
+          Personal Portfolio Website
+A responsive and animated portfolio built with HTML, CSS, and JavaScript. Showcases my skills, projects, and personal brand.  </p>
+      </div>
+   
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <h2>Contact Me</h2>
+    <form action="https://getform.io/f/awnqdlgb" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" placeholder="Your Message" required></textarea>
+      <input type="submit" value="Send Message">
+    </form>
+  </section>
+
+  <!-- Animation Scripts -->
+  <script>
+    // Fade-in Animation for Hero Text
+    anime({
+      targets: '.hero h1',
+      opacity: [0, 1],
+      translateY: [-50, 0],
+      delay: 500,
+      duration: 1200,
+      easing: 'easeOutExpo'
+    });
+
+    // Slide-in Animation for Section Titles
+    anime({
+      targets: '.section h2',
+      opacity: [0, 1],
+      translateY: [30, 0],
+      delay: anime.stagger(200, {start: 500}),
+      duration: 1000,
+      easing: 'easeOutExpo'
+    });
+
+    // Fade-up Animation for Project Cards
+    anime({
+      targets: '.project-card',
+      opacity: [0, 1],
+      translateY: [50, 0],
+      delay: anime.stagger(300, {start: 600}),
+      duration: 1200,
+      easing: 'easeOutExpo'
+    });
+
+    // Fade-in Animation for Contact Section Title
+    anime({
+      targets: '.contact h2',
+      opacity: [0, 1],
+      translateY: [30, 0],
+      delay: 500,
+      duration: 1000,
+      easing: 'easeOutExpo'
+    });
+
+    window.addEventListener("load", () => {
+      const skills = document.querySelectorAll(".skill");
+      skills.forEach(skill => {
+        const percent = skill.getAttribute("data-percent");
+        const bar = skill.querySelector(".skill-bar");
+        bar.style.width = percent + "%";
+      });
+    });
+  </script>
+
+</body>
+</html>

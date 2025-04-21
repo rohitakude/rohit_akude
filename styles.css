@@ -1,0 +1,40 @@
+.about {
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+  }
+  
+  .about-content {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    max-width: 900px;
+  }
+  
+  .about-text {
+    max-width: 500px;
+  }
+  
+  .about-image {
+    text-align: center;
+  }
+  
+  .about-image h2 {
+    margin-bottom: 1rem;
+  }
+  
+  .profile-img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid #007bff;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+  }
+  
+  .profile-img:hover {
+    transform: scale(1.05);
+  }
+  
